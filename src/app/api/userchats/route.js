@@ -15,7 +15,7 @@ export async function GET(req = NextRequest) {
   }
 
   try {
-    const userChats = await UserChats.find();
+    const userChats = await UserChats.find({ userId: userId });
 
     return new NextResponse(JSON.stringify(userChats[0]?.chats), {
       status: 200,
