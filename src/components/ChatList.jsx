@@ -9,6 +9,7 @@ import { MdTravelExplore } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { useChatList } from "@/context/chatListContext";
 
 const ChatList = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const ChatList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedChatId, setSelectedChatId] = useState(null);
   const [chatTitle, setChatTitle] = useState("");
+  const { toggleChatList, setChatListVisible } = useChatList();
 
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ["userChats"],
@@ -57,6 +59,7 @@ const ChatList = () => {
   const handleDelete = (chatId) => {
     deleteChatMutation.mutate(chatId);
     setIsModalOpen(false);
+    setChatListVisible(false);
   };
 
   // Effect untuk memeriksa apakah chat yang ditampilkan masih ada
@@ -74,7 +77,7 @@ const ChatList = () => {
   return (
     <>
       {isModalOpen && selectedChatId && (
-        <div className="fixed w-full h-full flex justify-center items-center top-0 left-0 z-50 bg-[#080808b9] ">
+        <div className="fixed w-full h-full flex justify-center items-center top-0 left-0 z-50 bg-[#080808b9] px-4 ">
           <div className="flex flex-col gap-5 w-[500px] bg-[#12101b] shadow-lg rounded-3xl">
             <h1 className=" text-lg font-bold  font-mono text-[#ddd] border-b-[1px] border-[#242231] p-5">
               Delete Chat ?
@@ -105,22 +108,31 @@ const ChatList = () => {
           </div>
         </div>
       )}
-      <div className="flex flex-col gap-4 w-full h-full p-5">
-        <div className="flex flex-col gap-2">
-          <p className="text-sm font-bold text-[#afaeae]">Dashboard</p>
-          <div className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]">
+      <div className="flex flex-col gap-2 w-full h-full px-5 pt-20 pb-2 relative">
+        <div className="flex flex-col gap-1">
+          <p className="text-sm font-bold text-[#afaeae] mb-2">Dashboard</p>
+          <div
+            onClick={toggleChatList}
+            className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]"
+          >
             <FaRocketchat size={20} />
             <Link className="text-sm font-bold" href="/dashboard">
               Create a new Chat
             </Link>
           </div>
-          <div className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]">
+          <div
+            onClick={toggleChatList}
+            className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]"
+          >
             <MdTravelExplore size={20} />
             <Link className="text-sm font-bold" href="/dashboard">
               Explore Hulenx AI
             </Link>
           </div>
-          <div className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]">
+          <div
+            onClick={toggleChatList}
+            className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]"
+          >
             <FaRocketchat size={20} />
             <Link className="text-sm font-bold" href="/dashboard">
               Contact Us
@@ -128,10 +140,11 @@ const ChatList = () => {
           </div>
           <hr className="border-[#242231]" />
         </div>
-        <div>
-          <p className="text-sm font-bold text-[#afaeae]">Recent Chats</p>
+        <div className="flex justify-between items-center pt-3">
+          <p className="text-sm font-bold text-[#afaeae]">Recent Chat</p>
+          <p className="text-xs text-[#afaeae] pr-4">({data?.length})</p>
         </div>
-        <div className="flex flex-col gap-2 w-full h-full overflow-y-scroll">
+        <div className="flex flex-col gap-2 w-full h-full overflow-y-auto scrollbar-hide py-4 px-3 ">
           {isPending ? (
             <div className="flex gap-2 items-center text-sm">
               <span className=" text-white">Loading... </span>
@@ -145,11 +158,12 @@ const ChatList = () => {
             data?.map((chat) => (
               <div
                 key={chat?._id}
-                className="chat-item flex gap-4 justify-between items-center "
+                className="chat-item flex gap-3 justify-between items-center "
               >
                 <Link
+                  onClick={toggleChatList}
                   href={`/dashboard/chats/${chat?._id}`}
-                  className={`py-3 px-5 w-full rounded-md font-mono ${
+                  className={`py-2 px-4 w-full rounded-md font-mono ${
                     pathname === `/dashboard/chats/${chat?._id}`
                       ? "bg-[#2c2937] text-[#ddd] rounded-md "
                       : "hover:bg-[#2c2937] hover:text-[#ddd]  text-gray-400"
@@ -171,18 +185,18 @@ const ChatList = () => {
           )}
         </div>
         <hr className="border-[#242231]" />
-        <div className="flex flex-col gap-2 mt-auto px-4">
+        <div className="flex items-center gap-2 mt-auto px-2">
           <Image
             src="/logo_.png"
             alt="logo-image"
-            width={30}
-            height={30}
-            className="w-[30px] h-[30px] object-contain"
+            width={24}
+            height={24}
+            className="w-[24px] h-[24px] object-contain"
             priority={true}
           />
-          <div className="flex flex-col gap-1 text-sm text-gray-400">
-            <span className="text-sm">Upgrade ke Hulenx AI PRO</span>
-            <span className="text-sm">Akses Unlimited Ke semua fitur</span>
+          <div className="flex flex-col gap-1 text-xs text-gray-400">
+            <span className="">Upgrade ke Hulenx AI PRO</span>
+            <span className="">Akses Unlimited Ke semua fitur</span>
           </div>
         </div>
       </div>

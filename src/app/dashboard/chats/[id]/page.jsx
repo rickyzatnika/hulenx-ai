@@ -56,7 +56,7 @@ const ChatPage = () => {
           />
         </div>
       )}
-      <div className="h-full flex flex-col justify-center items-center py-5 ">
+      <div className="h-full flex flex-col justify-center items-center py-5 pt-24">
         <div className="flex-1 overflow-y-scroll w-full flex justify-center wrapper">
           <div className="w-full lg:w-[70%] flex flex-col gap-5 chat relative">
             {isPending
@@ -64,7 +64,10 @@ const ChatPage = () => {
               : error
               ? "Something went wrong!"
               : data?.history?.map((message, i) => (
-                  <div key={i} className="flex flex-col gap-5 relative">
+                  <div
+                    key={i}
+                    className="flex text-[#cccccc]  flex-col gap-5 relative"
+                  >
                     {message.img && (
                       <IKImage
                         urlEndpoint={process.env.NEXT_PUBLIC_IMAGE_KIT_ENDPOINT}
@@ -84,12 +87,12 @@ const ChatPage = () => {
                     <div
                       className={
                         message.role === "user"
-                          ? "message user bg-[#2c2937c2] rounded-md w-[70%] self-end p-4"
-                          : "message p-5 "
+                          ? "message user bg-[#2c2937c2] text-xs md:text-sm leading-relaxed  rounded-md w-[70%] self-end p-4"
+                          : "message p-5 text-xs md:text-sm leading-relaxed  "
                       }
                     >
                       {message.role === "model" ? (
-                        <div className="message-content relative text-sm leading-relaxed">
+                        <div className="message-content relative text-xs md:text-sm   leading-relaxed">
                           <Markdown>{message.parts[0].text}</Markdown>
                           <div className="model-content absolute h-full top-0 -left-16 opacity-50 pr-4 z-10">
                             <Image
@@ -102,7 +105,7 @@ const ChatPage = () => {
                           </div>
                         </div>
                       ) : (
-                        <div className="message-content relative text-sm leading-relaxed">
+                        <div className="message-content relative text-xs md:text-sm leading-relaxed ">
                           <Markdown>{message.parts[0].text}</Markdown>
                         </div>
                       )}

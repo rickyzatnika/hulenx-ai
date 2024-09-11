@@ -3,10 +3,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const DashboardPage = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
+
+  const endRef = useRef(null);
 
   const mutation = useMutation({
     mutationFn: async (text) => {
@@ -35,9 +38,14 @@ const DashboardPage = () => {
 
     mutation.mutate(text);
   };
+
+  useEffect(() => {
+    endRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
-    <div className="h-full flex flex-col justify-between items-center py-6">
-      <div className="flex-1 flex flex-col items-center justify-center w-[50%] gap-12 ">
+    <div className="h-full flex flex-col justify-between items-center py-6 pt-24 relative">
+      <div className="flex-1 flex flex-col items-center justify-center w-full  lg:w-[50%] gap-12 ">
         <div className="flex items-center gap-5 opacity-20 ">
           <Image
             src="/logo_.png"
@@ -50,7 +58,7 @@ const DashboardPage = () => {
             HULENX AI
           </h1>
         </div>
-        <div className="w-full flex items-center justify-center gap-10">
+        <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-10">
           <div className="flex-1 flex flex-col items-center gap-3 text-sm p-5 border border-gray-700 rounded-xl text-gray-400">
             <Image
               src="/chat.png"
@@ -83,7 +91,8 @@ const DashboardPage = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-2 mx-auto w-[68%] h-auto  bg-[#12101B] rounded-xl mb-3">
+      <div className="m-0" ref={endRef}></div>
+      <div className="relative lg:absolute bottom-2 mx-auto w-full  lg:w-[68%] h-auto  bg-[#211d31] rounded-xl mb-0 lg:mb-3 mt-8 lg:mt-0">
         <form
           onSubmit={handleSubmit}
           className="flex items-center justify-between py-2  w-full h-full"
@@ -93,7 +102,7 @@ const DashboardPage = () => {
             name="text"
             required
             placeholder="Ask me anything..."
-            className="bg-transparent border-none outline-none text-[#ddd] py-2 px-4 flex-1"
+            className="bg-transparent border-none text-xs md:text-md  outline-none text-[#cccccc] placeholder:text-[#949393] focus:placeholder-transparent  py-2 px-4 flex-1"
           />
           <button className="bg-[#605e68] p-2  rounded-full cursor-pointer flex items-center justify-center mx-3 my-auto ">
             <Image

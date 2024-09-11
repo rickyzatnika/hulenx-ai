@@ -139,10 +139,10 @@ const NewPrompt = ({ data }) => {
           <Markdown>{answer}</Markdown>
         </div>
       )}
-      <div className="endChat pb-20" ref={endRef}></div>
+      <div className="pb-20" ref={endRef}></div>
       {/* ADD NEW CHAT */}
       <form
-        className="newForm w-[50%] flex items-center gap-2 fixed bottom-0.5 z-20  backdrop-blur-sm py-3 rounded-lg px-5 bg-[#161422dc] shadow-lg shadow-black/20"
+        className="newForm w-full lg:w-[50%] flex items-center gap-2 fixed bottom-0.5 z-20  backdrop-blur-sm py-3 rounded-lg px-5 bg-[#161422dc] shadow-lg shadow-black/20"
         onSubmit={handleSubmit}
         ref={formRef}
       >
@@ -153,13 +153,13 @@ const NewPrompt = ({ data }) => {
           rows={1} // Ubah menjadi 1 untuk memulai dengan satu baris
           name="text"
           placeholder="Write your question here..."
-          className="outline-none text-sm bg-transparent border-none resize-none p-3 text-[#ddd] placeholder:text-[#949393] focus:placeholder-transparent  w-full"
+          className="outline-none bg-transparent border-none resize-none p-3 text-xs md:text-sm text-[#cccccc] placeholder:text-[#949393] focus:placeholder-transparent  w-full"
           onInput={(e) => {
             e.target.style.height = "auto"; // Reset tinggi
             e.target.style.height = `${e.target.scrollHeight}px`; // Sesuaikan tinggi
           }}
         />
-        <button className="bg-[#2c2937] rounded-full p-2 flex items-center justify-center cursor-pointer">
+        <button className="bg-[#b4b4b4] rounded-full p-2 flex items-center justify-center cursor-pointer">
           <Image src="/arrow.png" alt="" width={16} height={16} />
         </button>
       </form>
