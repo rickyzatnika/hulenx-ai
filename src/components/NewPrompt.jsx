@@ -108,7 +108,6 @@ const NewPrompt = ({ data }) => {
 
   return (
     <>
-      {/* ADD NEW CHAT */}
       {img.isLoading && <div>Loading...</div>}
       {img.dbData?.filePath && (
         <div className="relative ">
@@ -134,6 +133,7 @@ const NewPrompt = ({ data }) => {
         </div>
       )}
       <div className="endChat pb-20" ref={endRef}></div>
+      {/* ADD NEW CHAT */}
       <form
         className="newForm w-[50%] flex items-center gap-2 fixed bottom-0.5 z-20  backdrop-blur-sm py-3 rounded-lg px-5 bg-[#161422dc] shadow-lg shadow-black/20"
         onSubmit={handleSubmit}

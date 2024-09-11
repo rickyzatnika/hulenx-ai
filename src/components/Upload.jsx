@@ -35,7 +35,11 @@ const Upload = ({ setImg }) => {
 
   const onSuccess = (res) => {
     console.log("Success", res);
-    setImg((prev) => ({ ...prev, isLoading: false, dbData: res }));
+    setImg((prev) => ({
+      ...prev,
+      isLoading: false,
+      dbData: { filePath: res.filePath }, // Pastikan filePath diambil dari respons
+    }));
   };
 
   const onUploadProgress = (progress) => {
