@@ -108,7 +108,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen h-full flex flex-col lg:flex-row items-cente gap-10 px-2 sm:px-6  md:px-24 cursor-none ">
+      <div className="w-full min-h-screen h-full flex flex-col lg:flex-row items-center gap-10 px-2 sm:px-6  md:px-24 cursor-none pt-24">
         <div className="fixed top-0 left-0 w-full h-full -z-50 overflow-hidden">
           <Image
             src="/orbital.png"
