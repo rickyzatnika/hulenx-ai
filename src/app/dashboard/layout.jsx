@@ -25,8 +25,8 @@ const Layout = ({ children }) => {
       <div className="grid grid-cols-12 px-2">
         <div
           className={`col-span-12 lg:col-span-3 ${
-            isChatListVisible ? "fixed left-0 z-20" : "fixed -left-[200%]"
-          } lg:sticky top-0 h-screen z-20 bg-[#161322] transition-all duration-300`}
+            isChatListVisible ? "fixed left-0 z-30" : "fixed -left-[200%]"
+          } lg:sticky top-0 h-screen z-30 bg-[#161322] transition-all duration-300`}
         >
           <ChatList />
         </div>
