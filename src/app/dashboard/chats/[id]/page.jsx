@@ -40,9 +40,15 @@ const ChatPage = () => {
           <IKImage
             urlEndpoint={process.env.NEXT_PUBLIC_IMAGE_KIT_ENDPOINT}
             path={selectedImage}
-            transformation={[{ quality: 80 }]}
-            width="800"
-            height="600"
+            transformation={[
+              {
+                height: 600,
+                width: 600,
+              },
+              {
+                quality: 90,
+              },
+            ]}
             loading="lazy"
             alt="image"
             className="object-contain"

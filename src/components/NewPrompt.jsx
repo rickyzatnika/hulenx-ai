@@ -108,14 +108,21 @@ const NewPrompt = ({ data }) => {
 
   return (
     <>
-      {img.isLoading && <div>Loading...</div>}
+      {img?.isLoading && <div>Loading...</div>}
       {img.dbData?.filePath && (
-        <div className="relative ">
+        <div className="relative w-48 h-48 flex self-end">
+          {/* Tambahkan kelas untuk tinggi */}
           <IKImage
             urlEndpoint={process.env.NEXT_PUBLIC_IMAGE_KIT_ENDPOINT}
             path={img.dbData?.filePath}
-            width="180"
-            transformation={[{ width: 180 }]}
+            transformation={[
+              {
+                height: 200,
+                width: 200,
+              },
+            ]}
+            loading="lazy"
+            priority={true}
             className="flex self-end"
             alt="image"
           />
