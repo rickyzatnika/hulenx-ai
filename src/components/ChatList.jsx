@@ -20,7 +20,7 @@ const ChatList = () => {
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ["userChats"],
     queryFn: async () =>
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/userchats`, {
+      await fetch(`/api/userchats`, {
         method: "GET",
       }).then((res) => {
         if (!res.ok) {
@@ -32,12 +32,9 @@ const ChatList = () => {
 
   const deleteChatMutation = useMutation({
     mutationFn: async (chatId) => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/chats/${chatId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`/api/chats/${chatId}`, {
+        method: "DELETE",
+      });
       if (!response.ok) {
         throw new Error("Failed to delete chat");
       }

@@ -40,14 +40,11 @@ const FormRegister = ({ setActiveButton }) => {
 
     try {
       setLoading(true);
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/register`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, password }),
-        }
-      );
+      const res = await fetch(`/api/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
       const errorData = await res.json();
 
       if (res.status === 201) {

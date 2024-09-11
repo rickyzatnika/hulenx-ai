@@ -9,9 +9,7 @@ const publicKey = process.env.NEXT_PUBLIC_IMAGE_KIT_PUBLIC_KEY;
 
 const authenticator = async () => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/upload`
-    );
+    const response = await fetch(`/api/upload`);
 
     if (!response.ok) {
       const errorText = await response.text();

@@ -17,7 +17,7 @@ const ChatPage = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () =>
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chats/${chatId}`, {
+      await fetch(`/api/chats/${chatId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

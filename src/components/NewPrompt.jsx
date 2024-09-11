@@ -36,20 +36,17 @@ const NewPrompt = ({ data }) => {
 
   const mutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/chats/${data._id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            question: question.length ? question : undefined,
-            answer,
-            img: img.dbData?.filePath || undefined,
-          }),
-        }
-      );
+      const res = await fetch(`/api/chats/${data._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: question.length ? question : undefined,
+          answer,
+          img: img.dbData?.filePath || undefined,
+        }),
+      });
 
       const result = await res.json(); // Ambil respons JSON
       console.log("PUT Response:", result); // Tambahkan log untuk respons
