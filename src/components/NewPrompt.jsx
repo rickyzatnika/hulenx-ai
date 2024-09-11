@@ -94,6 +94,10 @@ const NewPrompt = ({ data }) => {
     if (!text) return;
 
     add(text, false);
+
+    // Reset tinggi textarea setelah pengiriman
+    e.target.text.style.height = "auto"; // Reset tinggi
+    e.target.text.style.height = `${e.target.text.scrollHeight}px`;
   };
 
   const hashRun = useRef(false);
