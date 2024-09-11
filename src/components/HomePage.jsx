@@ -207,7 +207,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="relative mb-6 lg:absolute bottom-0 flex items-center flex-col gap-3 translate-x-[-50%] left-[50%] mt-14">
+        <div className="relative mb-6 lg:absolute bottom-0 flex items-center flex-col gap-3 lg:translate-x-[-50%] lg:left-[50%] mt-14">
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo_.png"
