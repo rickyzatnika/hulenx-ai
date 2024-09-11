@@ -95,9 +95,12 @@ const NewPrompt = ({ data }) => {
 
     add(text, false);
 
+    // Simpan tinggi awal
+    const initialHeight = e.target.text.scrollHeight;
+
     // Reset tinggi textarea setelah pengiriman
     e.target.text.style.height = "auto"; // Reset tinggi
-    e.target.text.style.height = `${e.target.text.scrollHeight}px`;
+    e.target.text.style.height = `${initialHeight}px`; // Kembalikan ke tinggi awal
   };
 
   const hashRun = useRef(false);
@@ -146,7 +149,7 @@ const NewPrompt = ({ data }) => {
       <div className="pb-10" ref={endRef}></div>
       {/* ADD NEW CHAT */}
       <form
-        className="newForm w-full lg:w-[50%] flex items-center gap-2 fixed bottom-0.5 z-20  backdrop-blur-sm py-3 rounded-lg px-5 bg-[#161422dc] shadow-lg shadow-black/20"
+        className="newForm w-full lg:w-[50%] flex items-center gap-2 fixed bottom-0.5 z-20  backdrop-blur-sm py-2 rounded-lg px-5 bg-[#161422dc] shadow-lg shadow-black/20"
         onSubmit={handleSubmit}
         ref={formRef}
       >
