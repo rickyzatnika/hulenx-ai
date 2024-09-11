@@ -1,0 +1,8 @@
+{
+  "terminal.integrated.tabs.defaultColor": null,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.fontFamily": "Fira Code",
+  "scm.inputFontFamily": "default",
+  "editor.fontFamily": "Fira Code",
+  "editor.tabSize": 2
+}
