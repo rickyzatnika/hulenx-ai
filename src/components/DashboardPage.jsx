@@ -102,7 +102,7 @@ const DashboardPage = () => {
             name="text"
             required
             placeholder="Ask me anything..."
-            className="bg-transparent border-none text-xs md:text-md  outline-none text-[#cccccc] placeholder:text-[#949393] focus:placeholder-transparent  py-2 px-4 flex-1"
+            className="bg-transparent border-none text-xs md:text-md  outline-none text-[#e2e2e2] placeholder:text-[#949393] focus:placeholder-transparent  py-2 px-4 flex-1"
           />
           <button className="bg-[#605e68] p-2  rounded-full cursor-pointer flex items-center justify-center mx-3 my-auto ">
             <Image

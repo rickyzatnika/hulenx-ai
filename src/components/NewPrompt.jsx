@@ -130,12 +130,12 @@ const NewPrompt = ({ data }) => {
       )}
 
       {question && (
-        <div className="message user bg-[#2c2937c2] rounded-md w-[70%] self-end p-4">
+        <div className="message user text-xs md:text-sm leading-relaxed bg-[#2c2937c2] rounded-md w-[70%] self-end p-4">
           {question}
         </div>
       )}
       {answer && (
-        <div className="message text-sm leading-relaxed p-5">
+        <div className="message text-xs md:text-sm leading-relaxed p-5">
           <Markdown>{answer}</Markdown>
         </div>
       )}
@@ -153,7 +153,7 @@ const NewPrompt = ({ data }) => {
           rows={1} // Ubah menjadi 1 untuk memulai dengan satu baris
           name="text"
           placeholder="Write your question here..."
-          className="outline-none bg-transparent border-none resize-none p-3 text-xs md:text-sm text-[#cccccc] placeholder:text-[#949393] focus:placeholder-transparent  w-full"
+          className="outline-none bg-transparent border-none resize-none p-3 text-xs md:text-sm text-[#e2e2e2] placeholder:text-[#949393] focus:placeholder-transparent  w-full"
           onInput={(e) => {
             e.target.style.height = "auto"; // Reset tinggi
             e.target.style.height = `${e.target.scrollHeight}px`; // Sesuaikan tinggi
