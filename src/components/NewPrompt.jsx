@@ -139,7 +139,7 @@ const NewPrompt = ({ data }) => {
           <Markdown>{answer}</Markdown>
         </div>
       )}
-      <div className="pb-20" ref={endRef}></div>
+      <div className="pb-10" ref={endRef}></div>
       {/* ADD NEW CHAT */}
       <form
         className="newForm w-full lg:w-[50%] flex items-center gap-2 fixed bottom-0.5 z-20  backdrop-blur-sm py-3 rounded-lg px-5 bg-[#161422dc] shadow-lg shadow-black/20"

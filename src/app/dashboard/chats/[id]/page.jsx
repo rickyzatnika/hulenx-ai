@@ -92,7 +92,7 @@ const ChatPage = () => {
                       }
                     >
                       {message.role === "model" ? (
-                        <div className="message-content relative text-xs md:text-sm   leading-relaxed">
+                        <div className="message-content relative text-xs md:text-sm leading-relaxed">
                           <Markdown>{message.parts[0].text}</Markdown>
                           <div className="model-content absolute h-full top-0 -left-16 opacity-50 pr-4 z-10">
                             <Image
