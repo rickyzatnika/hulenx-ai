@@ -120,7 +120,7 @@ const Login = () => {
                   placeholder="Nama Pengguna"
                   name="name"
                   required
-                  className="w-full px-4 py-3 text-gray-600 focus:placeholder-transparent dark:placeholder-gray-300 focus:dark:placeholder-transparent bg-transparent border-2 border-gray-300 rounded outline-none focus:ring-0 focus:border-[#372777] dark:text-gray-300"
+                  className="w-full px-4 py-3 text-[#ddd] focus:placeholder-transparent dark:placeholder-gray-300 focus:dark:placeholder-transparent bg-transparent border-2 border-gray-300 rounded outline-none focus:ring-0 focus:border-[#372777] dark:text-gray-300"
                 />
                 <div className="relative flex items-center">
                   <input
@@ -128,7 +128,7 @@ const Login = () => {
                     placeholder="Password"
                     name="password"
                     required
-                    className="w-full px-4 py-3 text-gray-600 focus:placeholder-transparent dark:placeholder-gray-300 focus:dark:placeholder-transparent bg-transparent border-2 border-gray-300 rounded focus:ring-0 outline-none focus:border-[#372777] dark:text-gray-300"
+                    className="w-full px-4 py-3 text-[#ddd] focus:placeholder-transparent dark:placeholder-gray-300 focus:dark:placeholder-transparent bg-transparent border-2 border-gray-300 rounded focus:ring-0 outline-none focus:border-[#372777] dark:text-gray-300"
                   />
                   <div className="absolute right-3 cursor-pointer">
                     {!passwordVisible ? (

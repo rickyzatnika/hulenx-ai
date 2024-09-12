@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,6 +9,9 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useChatList } from "@/context/chatListContext";
+import { FaUserCircle } from "react-icons/fa";
+import { signOut, useSession } from "next-auth/react";
+import { BsStars } from "react-icons/bs";
 
 const ChatList = () => {
   const router = useRouter();
@@ -18,6 +20,9 @@ const ChatList = () => {
   const [selectedChatId, setSelectedChatId] = useState(null);
   const [chatTitle, setChatTitle] = useState("");
   const { toggleChatList, setChatListVisible } = useChatList();
+  const { data: session } = useSession();
+
+  const userName = session?.user?.name;
 
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ["userChats"],
@@ -129,15 +134,7 @@ const ChatList = () => {
               Explore Hulenx AI
             </Link>
           </div>
-          <div
-            onClick={toggleChatList}
-            className="flex gap-2 items-center px-4 py-3 rounded-md text-gray-400 hover:text-[#ddd] hover:bg-[#191724]"
-          >
-            <FaRocketchat size={20} />
-            <Link className="text-sm font-bold" href="/dashboard">
-              Contact Us
-            </Link>
-          </div>
+
           <hr className="border-[#242231]" />
         </div>
         <div className="flex justify-between items-center pt-3">
@@ -185,19 +182,25 @@ const ChatList = () => {
           )}
         </div>
         <hr className="border-[#242231]" />
-        <div className="flex items-center gap-2 mt-auto px-2">
-          <Image
-            src="/logo_.png"
-            alt="logo-image"
-            width={24}
-            height={24}
-            className="w-[24px] h-[24px] object-contain"
-            priority={true}
-          />
-          <div className="flex flex-col gap-1 text-xs text-gray-400">
-            <span className="">Upgrade ke Hulenx AI PRO</span>
-            <span className="">Akses Unlimited Ke semua fitur</span>
-          </div>
+        <div className="flex items-center justify-between gap-1 mt-auto px-2 py-3 text-[#ddd]">
+          <Link
+            href={`/dashboard/setting/${session?.user?._id}`}
+            className="flex gap-2 text-sm"
+          >
+            <FaUserCircle size={28} />
+            <span className="capitalize">{userName}</span>
+          </Link>
+          <button
+            onClick={() =>
+              signOut({
+                callbackUrl: "/sign-in",
+                redirect: true,
+              })
+            }
+            className="text-xs flex gap-1 items-center capitalize p-2 bg-[#2c2937] hover:bg-[#393644] rounded-lg"
+          >
+            sign out
+          </button>
         </div>
       </div>
     </>

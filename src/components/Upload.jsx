@@ -1,9 +1,8 @@
 "use client";
 
 import { ImageKitProvider, IKUpload } from "imagekitio-next";
-import Image from "next/image";
 import { useRef } from "react";
-
+import { FaRegImage } from "react-icons/fa6";
 const urlEndpoint = process.env.NEXT_PUBLIC_IMAGE_KIT_ENDPOINT;
 const publicKey = process.env.NEXT_PUBLIC_IMAGE_KIT_PUBLIC_KEY;
 
@@ -83,7 +82,7 @@ const Upload = ({ setImg }) => {
       />
       {
         <label onClick={() => ikUploadRef.current.click()}>
-          <Image src="/attachment.png" alt="" width={20} height={20} />
+          <FaRegImage size={20} className="text-[#cacaca]" />
         </label>
       }
     </ImageKitProvider>

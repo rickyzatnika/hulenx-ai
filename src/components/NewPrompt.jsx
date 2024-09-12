@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Upload from "./Upload";
 import model from "@/lib/gemini";
 import Image from "next/image";
+import rehypeRaw from "rehype-raw";
 
 const NewPrompt = ({ data }) => {
   const queryClient = useQueryClient();
@@ -137,13 +138,13 @@ const NewPrompt = ({ data }) => {
       )}
 
       {question && (
-        <div className="message user text-xs md:text-sm leading-relaxed bg-[#2c2937c2] rounded-md w-[70%] self-end p-4">
+        <div className=" text-[#cccccc] bg-[#2c2937c2] text-md leading-relaxed  rounded-md w-[70%] self-end p-4">
           {question}
         </div>
       )}
       {answer && (
-        <div className="message text-xs md:text-sm leading-relaxed p-5">
-          <Markdown>{answer}</Markdown>
+        <div className="text-md text-[#cccccc] leading-relaxed">
+          <Markdown rehypePlugins={[rehypeRaw]}>{answer}</Markdown>
         </div>
       )}
       <div className="pb-10" ref={endRef}></div>
@@ -153,8 +154,10 @@ const NewPrompt = ({ data }) => {
         onSubmit={handleSubmit}
         ref={formRef}
       >
-        <Upload setImg={setImg} />
-        <input id="file" type="file" multiple={false} hidden />
+        <div className="absolute left-1 ">
+          <Upload setImg={setImg} />
+          <input id="file" type="file" multiple={false} hidden />
+        </div>
         <textarea
           type="text"
           rows={1} // Ubah menjadi 1 untuk memulai dengan satu baris
@@ -166,7 +169,7 @@ const NewPrompt = ({ data }) => {
             e.target.style.height = `${e.target.scrollHeight}px`; // Sesuaikan tinggi
           }}
         />
-        <button className="bg-[#b4b4b4] rounded-full p-2 flex items-center justify-center cursor-pointer">
+        <button className="bg-[#dbdbdb] absolute right-8  rounded-full p-2 flex items-center justify-center cursor-pointer">
           <Image src="/arrow.png" alt="" width={16} height={16} />
         </button>
       </form>

@@ -108,7 +108,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen h-full flex flex-col lg:flex-row items-center gap-10 px-2 sm:px-6  md:px-24 cursor-none pt-24">
+      <div className="w-full min-h-screen h-full flex flex-col lg:flex-row items-center gap-10 px-2 sm:px-6  md:px-24 cursor-none pt-24 md:pt-14 lg:pt-0  overflow-hidden">
         <div className="fixed top-0 left-0 w-full h-full -z-50 overflow-hidden">
           <Image
             src="/orbital.png"
@@ -147,7 +147,7 @@ const HomePage = () => {
         </div>
         <div
           ref={layer3Ref}
-          className="flex-0 lg:flex-1 flex items-center justify-center w-full h-full md:h-[100vh] "
+          className="flex-0 lg:flex-1 flex items-center justify-center w-full h-full md:h-[100vh]"
         >
           <div className="flex items-center justify-center bg-[#140e2d] w-full md:w-[80%] h-[200px] md:h-[300px] relative rounded-3xl">
             <div className="w-full h-full overflow-hidden absolute top-0 left-0 rounded ">

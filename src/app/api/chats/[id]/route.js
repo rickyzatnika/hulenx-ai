@@ -33,7 +33,7 @@ export async function GET(req = NextRequest, { params }) {
     });
   }
 }
-
+/*HANDLER PUT GEMINI AI */
 export async function PUT(req = NextRequest, { params }) {
   // Pastikan params.id ada
   if (!params.id) {
@@ -92,6 +92,7 @@ export async function PUT(req = NextRequest, { params }) {
   }
 }
 
+/*HANDLER DELETE CHAT */
 export async function DELETE(req = NextRequest, { params }) {
   await dbConnect();
   const token = await getToken({ req });

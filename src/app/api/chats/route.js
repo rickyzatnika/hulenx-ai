@@ -4,6 +4,12 @@ import dbConnect from "@/utils/db";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
+import { HfInference } from "@huggingface/inference";
+
+// Pastikan access token disimpan di environment variable
+const hf = new HfInference(process.env.HUGGINGFACE_TOKEN);
+
+/*INI GEMINI AI */
 export async function POST(req = NextRequest) {
   await dbConnect();
 
@@ -11,7 +17,7 @@ export async function POST(req = NextRequest) {
   const token = await getToken({ req });
   const userId = token?._id; // Mendapatkan user ID dari token
   const { text } = await req.json();
-  console.log(text);
+
   if (!userId) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,

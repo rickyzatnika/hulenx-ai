@@ -23,11 +23,15 @@ const DashboardPage = () => {
       return await res.json(); // Mengembalikan respons JSON
     },
     onSuccess: async (data) => {
-      // Ubah parameter menjadi data
-      // Invalidate and refetch
-      await queryClient.invalidateQueries({ queryKey: ["userChats"] });
-      const chatId = data.chatId; // Ambil chatId dari respons
-      router.push(`/dashboard/chats/${chatId}`); // Navigasi ke halaman chat
+      if (data && data.chatId) {
+        await queryClient.invalidateQueries({ queryKey: ["userChats"] });
+        router.push(`/dashboard/chats/${data.chatId}`);
+      } else {
+        console.error("chatId tidak ditemukan dalam respons");
+      }
+    },
+    onError: (error) => {
+      console.error("Error:", error.message);
     },
   });
 
@@ -40,11 +44,13 @@ const DashboardPage = () => {
   };
 
   useEffect(() => {
-    endRef.current.scrollIntoView({ behavior: "smooth" });
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   }, []);
 
   return (
-    <div className="h-full flex flex-col justify-between items-center py-6 pt-24 relative">
+    <div className="h-full flex flex-col justify-between items-center py-6 pt-24">
       <div className="flex-1 flex flex-col items-center justify-center w-full  lg:w-[50%] gap-12 ">
         <div className="flex items-center gap-5 opacity-20 ">
           <Image
@@ -92,19 +98,19 @@ const DashboardPage = () => {
         </div>
       </div>
       <div className="m-0" ref={endRef}></div>
-      <div className="relative lg:absolute bottom-2 mx-auto w-full  lg:w-[68%] h-auto  bg-[#211d31] rounded-xl mb-0 lg:mb-3 mt-8 lg:mt-0">
+      <div className="relative lg:absolute bottom-0 mx-auto w-full  lg:w-[50%]  bg-[#161422dc] shadow-lg shadow-black/20 rounded-xl mb-0 lg:mb-3 mt-8 lg:mt-0">
         <form
           onSubmit={handleSubmit}
-          className="flex items-center justify-between py-2  w-full h-full"
+          className="flex items-center justify-between py-3  w-full h-full"
         >
           <input
             type="text"
             name="text"
             required
             placeholder="Ask me anything..."
-            className="bg-transparent border-none text-xs md:text-md  outline-none text-[#e2e2e2] placeholder:text-[#949393] focus:placeholder-transparent  py-2 px-4 flex-1"
+            className="bg-transparent border-none text-sm md:text-md  outline-none text-[#e2e2e2] placeholder:text-[#949393] focus:placeholder-transparent  py-2 px-4 flex-1"
           />
-          <button className="bg-[#605e68] p-2  rounded-full cursor-pointer flex items-center justify-center mx-3 my-auto ">
+          <button className="bg-[#dbdbdb] p-2  rounded-full cursor-pointer flex items-center justify-center mx-3 my-auto ">
             <Image
               src="/arrow.png"
               alt=""

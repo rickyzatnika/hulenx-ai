@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 z-50 flex justify-between items-center px-4 lg:px-6 py-2 bg-[#0e0c16]/10 w-full h-20 backdrop-blur-md">
+      <div className="fixed top-0 left-0 z-50 flex justify-between items-center px-4 lg:px-6 py-2 bg-[#161422dc] w-full h-20 backdrop-blur-sm">
         <Link href="/" className="flex items-center md:gap-2">
           <Image
             src="/logo_.png"
@@ -27,21 +27,24 @@ const Header = () => {
             height={30}
             className="w-[30px] h-[30px] object-contain"
           />
-          <h1 className="text-md md:text-2xl font-bold">Hulenx</h1>
+          <h1 className="text-md md:text-2xl text-[#ddd] font-bold">Hulenx</h1>
         </Link>
         <div className="flex items-center gap-4">
           {status === "loading" ? ( // Tambahkan kondisi loading
             <div className="flex gap-2 items-center justify-center">
-              <span className=" text-white text-xs">Loading... </span>
+              <span className=" text-[#ddd] text-xs">Loading... </span>
               <span className="loader"></span>
             </div>
           ) : status === "authenticated" ? (
             <div className="flex items-center gap-1  md:gap-4">
-              <p className="text-md hidden sm:block ">
+              <Link
+                href="/dashboard"
+                className="text-md block mr-3 text-[#ddd] "
+              >
                 Hi, {session.user.name}
-              </p>
+              </Link>
               <button
-                className="px-5 py-2 rounded-md bg-red-500 block text-xs md:text-sm "
+                className="px-5 py-2 hidden sm:block rounded-md bg-red-500 text-xs md:text-sm "
                 onClick={() => signOut({ callbackUrl: "/sign-in" })}
               >
                 Sign Out

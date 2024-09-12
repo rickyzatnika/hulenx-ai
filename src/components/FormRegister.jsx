@@ -71,20 +71,20 @@ const FormRegister = ({ setActiveButton }) => {
         type="text"
         placeholder="Nama Pengguna"
         name="name"
-        className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-gray-600 dark:text-gray-100 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
+        className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-[#ddd] dark:text-gray-100 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
       />
       <input
         type="email"
         placeholder="example@gmail.com"
         name="email"
-        className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-gray-600 dark:text-gray-100 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
+        className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-[#ddd] dark:text-gray-100 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
       />
       <div className="flex items-center justify-between relative">
         <input
           type={passwordVisible ? "text" : "password"}
           placeholder="Password"
           name="password"
-          className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-gray-600 dark:text-gray-100 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
+          className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-[#ddd] dark:text-gray-100 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
         />
         <div className="absolute right-3 cursor-pointer">
           {!passwordVisible ? (
@@ -104,12 +104,12 @@ const FormRegister = ({ setActiveButton }) => {
         <input
           type={confirmVisible ? "text" : "password"}
           placeholder="Konfirmasi Password"
-          className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-gray-600 dark:text-gray-300 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
+          className="placeholder:text-sm placeholder:text-gray-500 focus:dark:placeholder-transparent  focus:placeholder-transparent placeholder:dark:text-gray-100/80 px-4 py-3 rounded  w-full border-gray-300 border-2 bg-transparent text-[#ddd] dark:text-gray-300 outline-none  focus:outline-none focus:ring-0 focus:border-2   focus:border-[#372777]"
         />
         <div className="absolute right-3 cursor-pointer">
           {!confirmVisible ? (
             <TbEyeClosed
-              className="text-gray-400/80"
+              className="text-gray-300/80"
               onClick={() => handleConfirmVisible()}
             />
           ) : (
@@ -122,7 +122,7 @@ const FormRegister = ({ setActiveButton }) => {
       </div>
       <button
         disabled={loading}
-        className="px-4 py-3 rounded uppercase transition-all duration-150 ease-linear bg-gradient-to-tr from-[#413572] to-[#413572] text-slate-100  hover:text-white"
+        className="px-4 py-3 rounded uppercase transition-all duration-150 ease-linear bg-gradient-to-tr from-[#413572] to-[#413572] text-[#ddd]  hover:text-white"
         type="submit"
       >
         {loading ? (

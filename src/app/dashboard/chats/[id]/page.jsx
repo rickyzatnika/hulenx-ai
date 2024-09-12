@@ -8,6 +8,7 @@ import NewPrompt from "@/components/NewPrompt";
 import Image from "next/image";
 import { IKImage } from "imagekitio-next";
 import { useState } from "react";
+import rehypeRaw from "rehype-raw";
 
 const ChatPage = () => {
   const { id: chatId } = useParams();
@@ -29,6 +30,8 @@ const ChatPage = () => {
     setShowImage(true);
     setSelectedImage(img);
   };
+
+  console.log(data);
 
   return (
     <>
@@ -56,7 +59,7 @@ const ChatPage = () => {
           />
         </div>
       )}
-      <div className="h-full flex flex-col justify-center items-center py-5 pt-24">
+      <div className="h-full flex flex-col justify-center items-center py-5 pt-24 px-2">
         <div className="flex-1 overflow-y-scroll w-full flex justify-center wrapper">
           <div className="w-full lg:w-[70%] flex flex-col gap-5 chat relative">
             {isPending
@@ -66,7 +69,7 @@ const ChatPage = () => {
               : data?.history?.map((message, i) => (
                   <div
                     key={i}
-                    className="flex text-[#cccccc]  flex-col gap-5 relative"
+                    className="flex text-[#cccccc] flex-col gap-5 relative"
                   >
                     {message.img && (
                       <IKImage
@@ -87,26 +90,29 @@ const ChatPage = () => {
                     <div
                       className={
                         message.role === "user"
-                          ? "message user bg-[#2c2937c2] text-xs md:text-sm leading-relaxed  rounded-md w-[70%] self-end p-4"
-                          : "message p-5 text-xs md:text-sm leading-relaxed  "
+                          ? "message user bg-[#3c394b9f] rounded-md self-end py-2 px-4"
+                          : "message p-1  "
                       }
                     >
                       {message.role === "model" ? (
-                        <div className="message-content relative text-xs md:text-sm leading-relaxed">
-                          <Markdown>{message.parts[0].text}</Markdown>
-                          <div className="model-content absolute h-full top-0 -left-16 opacity-50 pr-4 z-10">
+                        <div className="message-content relative text-md px-2 leading-relaxed">
+                          <Markdown rehypePlugins={[rehypeRaw]}>
+                            {message.parts[0].text}
+                          </Markdown>
+                          <div className="model-content absolute rounded-full bg-[#2c2937c2] p-2 top-0 -left-16 opacity-50 pr-4 z-10">
                             <Image
                               src="/logo_.png"
                               alt="hulenx-ai"
-                              width={40}
-                              height={40}
-                              className="w-[40px] h-[40px]"
+                              width={20}
+                              height={25}
+                              className="w-[20px] h-[25px] object-contain mx-auto"
                             />
                           </div>
                         </div>
                       ) : (
-                        <div className="message-content relative text-xs md:text-sm leading-relaxed ">
+                        <div className="leading-relaxed text-md">
                           <Markdown>{message.parts[0].text}</Markdown>
+                          <span className="text-sm text-gray-400"></span>
                         </div>
                       )}
                     </div>
